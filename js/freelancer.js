@@ -57,11 +57,9 @@ $(function() {
 
         $.getJSON("http://vicsurv.cloudapp.net:5780/api/get_daily_levels", function( data ) {
             $.each(data, function(i, item) {
-                draw_marker(marker_image, item.x, item.y);
+                draw_marker(marker_image, item.x - 25 , item.y - 25);
             });
         });
-        // draw_marker(marker_image, 383.700141795562, 347.700800770865);
-        
       }
     }
 
