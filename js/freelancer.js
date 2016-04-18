@@ -54,9 +54,10 @@ $(function() {
       $.getJSON("http://vicsurv.cloudapp.net:5780/api/get_daily_levels", function( data ) {
         $.each(data, function(i, item) {
           bitmap_marker[i] = new createjs.Bitmap(marker);
-          bitmap_marker[i].x = item.x;
-          bitmap_marker[i].y = item.y;
+          bitmap_marker[i].x = item.x - 25;
+          bitmap_marker[i].y = item.y - 25;
           bitmap_marker[i].addEventListener("click", function(event) {
+            $(".myObj").data('content', item.region).data('originalTitle', item.area);
             $(".myObj").css({'position':'absolute','top':item.y,'left':item.x}).popover({
                 trigger: 'click',
                 placement:'top'
