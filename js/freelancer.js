@@ -60,9 +60,15 @@ $(function() {
           bitmap_marker[i].x = item.x - 25;
           bitmap_marker[i].y = item.y - 25;
           bitmap_marker[i].addEventListener("click", function(event) {
-            $(".myObj").attr('data-content', item.region)
+            ni = (item.ni_p50/13.4*100).toFixed(1);
+            ox = (item.ox_p50/11*100).toFixed(1);
+            ph = (item.ph_p50/2.4*100).toFixed(1);
+            ts = (item.ts_p50/47*100).toFixed(1);
+            content = "<p>" + item.region + "</p>Nitrogen: " + ni + "%<br/>Oxygen: " + ox + "%<br/>Phosphorus: " + ph + "%<br/>Total suspended solids: " + ts + "%"
+            $(".myObj").attr('data-content', content)
             $(".myObj").attr('data-original-title', item.area);
             $(".myObj").css({'position':'absolute','top':item.y,'left':item.x + 15}).popover({
+                html : true,
                 trigger: 'click',
                 placement:'top'
             }).popover('show');
