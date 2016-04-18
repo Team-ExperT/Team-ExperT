@@ -83,7 +83,7 @@ header img {
 header .intro-text .name {
   display: block;
   font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  text-transform: uppercase;
+  /*text-transform: uppercase;*/
   font-weight: 700;
   font-size: 2em;
 }
@@ -125,7 +125,7 @@ header .intro-text .skills {
 }
 .navbar {
   font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  text-transform: uppercase;
+  /*text-transform: uppercase;*/
   font-weight: 700;
 }
 .navbar a:focus {
@@ -197,7 +197,7 @@ section.success a.active {
   height: 20px;
   font-size: 20px;
   text-align: center;
-  top: 50%;
+  top: 40%;
   margin-top: -12px;
   color: white;
 }
