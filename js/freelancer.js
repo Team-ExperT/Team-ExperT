@@ -37,34 +37,36 @@ $('.navbar-collapse ul li a:not(.dropdown-toggle)').click(function() {
 });
 
 $(function() {
-    var canvas = document.getElementById('viewport');
-    canvas.width  = 640;
-    canvas.height = 640;
-    context = canvas.getContext('2d');
+  var stage = new createjs.Stage("viewport");
 
-    draw_base();
+  base_image = new Image();
+  base_image.src = 'img/map/map.png';
 
-    function draw_base()
-    {
-      base_image = new Image();
-      base_image.src = 'img/map/map.png';
+  base_image.onload = function(){
+    var bitmap = new createjs.Bitmap(base_image);
+    stage.addChild(bitmap);
 
-        marker_image = new Image();
-        marker_image.src = 'img/map/marker.png';
+    marker = new Image();
+    marker.src = 'img/map/marker.png';
 
-      base_image.onload = function(){
-        context.drawImage(base_image, 0, 0);
-
-        $.getJSON("http://vicsurv.cloudapp.net:5780/api/get_daily_levels", function( data ) {
-            $.each(data, function(i, item) {
-                draw_marker(marker_image, item.x - 25 , item.y - 25);
-            });
+    marker.onload = function(){
+      var bitmap_marker = [];
+      $.getJSON("http://vicsurv.cloudapp.net:5780/api/get_daily_levels", function( data ) {
+        $.each(data, function(i, item) {
+          bitmap_marker[i] = new createjs.Bitmap(marker);
+          bitmap_marker[i].x = item.x;
+          bitmap_marker[i].y = item.y;
+          bitmap_marker[i].addEventListener("click", function(event) {
+            $(".myObj").css({'position':'absolute','top':item.y,'left':item.x}).popover({
+                trigger: 'click',
+                placement:'top'
+            }).popover('show');
+          });
+          stage.addChild(bitmap_marker[i]);
         });
-      }
-    }
 
-    function draw_marker(marker_image, x, y)
-    {
-        context.drawImage(marker_image, x, y);
-    }
+        stage.update();
+      });
+    };
+  };
 });
