@@ -45,6 +45,9 @@ $(function() {
   base_image.onload = function(){
     var bitmap = new createjs.Bitmap(base_image);
     stage.addChild(bitmap);
+    bitmap.addEventListener("click", function(event) {
+       $(".myObj").popover('hide');
+    });
 
     marker = new Image();
     marker.src = 'img/map/marker.png';
@@ -57,10 +60,8 @@ $(function() {
           bitmap_marker[i].x = item.x - 25;
           bitmap_marker[i].y = item.y - 25;
           bitmap_marker[i].addEventListener("click", function(event) {
-            $(".myObj").attr('data-content', item.region).data('data-original-title', item.area);
-            var popover = $('.myObj').data('popover');
-            popover.setContent();
-            popover.$tip.addClass(popover.options.placement);
+            $(".myObj").attr('data-content', item.region)
+            $(".myObj").attr('data-original-title', item.area);
             $(".myObj").css({'position':'absolute','top':item.y,'left':item.x}).popover({
                 trigger: 'click',
                 placement:'top'

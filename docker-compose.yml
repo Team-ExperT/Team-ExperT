@@ -1,6 +1,6 @@
 web:
-  image: nginx
+  build: .
   volumes:
-   - .:/usr/share/nginx/html
+   - .:/usr/local/apache2/htdocs/
   ports:
    - "80:80"
