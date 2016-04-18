@@ -62,7 +62,7 @@ $(function() {
           bitmap_marker[i].addEventListener("click", function(event) {
             $(".myObj").attr('data-content', item.region)
             $(".myObj").attr('data-original-title', item.area);
-            $(".myObj").css({'position':'absolute','top':item.y,'left':item.x}).popover({
+            $(".myObj").css({'position':'absolute','top':item.y,'left':item.x + 15}).popover({
                 trigger: 'click',
                 placement:'top'
             }).popover('show');
