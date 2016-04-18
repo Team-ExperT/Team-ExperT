@@ -57,7 +57,10 @@ $(function() {
           bitmap_marker[i].x = item.x - 25;
           bitmap_marker[i].y = item.y - 25;
           bitmap_marker[i].addEventListener("click", function(event) {
-            $(".myObj").data('content', item.region).data('originalTitle', item.area);
+            $(".myObj").attr('data-content', item.region).data('data-original-title', item.area);
+            var popover = $('.myObj').data('popover');
+            popover.setContent();
+            popover.$tip.addClass(popover.options.placement);
             $(".myObj").css({'position':'absolute','top':item.y,'left':item.x}).popover({
                 trigger: 'click',
                 placement:'top'
