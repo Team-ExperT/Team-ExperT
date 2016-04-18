@@ -35,3 +35,38 @@ $('body').scrollspy({
 $('.navbar-collapse ul li a:not(.dropdown-toggle)').click(function() {
     $('.navbar-toggle:visible').click();
 });
+
+$(function() {
+    var canvas = document.getElementById('viewport');
+    canvas.width  = 640;
+    canvas.height = 640;
+    context = canvas.getContext('2d');
+
+    draw_base();
+
+    function draw_base()
+    {
+      base_image = new Image();
+      base_image.src = 'img/map/map.png';
+
+        marker_image = new Image();
+        marker_image.src = 'img/map/marker.png';
+
+      base_image.onload = function(){
+        context.drawImage(base_image, 0, 0);
+
+        $.getJSON("http://vicsurv.cloudapp.net:5780/api/get_daily_levels", function( data ) {
+            $.each(data, function(i, item) {
+                draw_marker(marker_image, item.x, item.y);
+            });
+        });
+        // draw_marker(marker_image, 383.700141795562, 347.700800770865);
+        
+      }
+    }
+
+    function draw_marker(marker_image, x, y)
+    {
+        context.drawImage(marker_image, x, y);
+    }
+});
