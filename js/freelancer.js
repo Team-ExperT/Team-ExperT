@@ -58,7 +58,8 @@ $(function() {
 
     marker.onload = function(){
       var bitmap_marker = [];
-      $.getJSON("http://vicsurv.cloudapp.net:5780/api/get_daily_levels", function( data ) {
+      stage.update();
+      $.getJSON("http://vicsurv.cloudapp.net:5780/api/index", function( data ) {
         $.each(data, function(i, item) {
           bitmap_marker[i] = new createjs.Bitmap(marker);
 
