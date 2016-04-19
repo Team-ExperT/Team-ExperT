@@ -62,16 +62,16 @@ $(function() {
         $.each(data, function(i, item) {
           bitmap_marker[i] = new createjs.Bitmap(marker);
 
-          // Popover position
+          // Marker position
           bitmap_marker[i].x = item.x - 25;
           bitmap_marker[i].y = item.y - 25;
 
-          // Animating popover on hover
+          // Animating marker on hover
           bitmap_marker[i].alpha = 0.5;
           bitmap_marker[i].on("mouseover", handleInteraction);
           bitmap_marker[i].on("mouseout", handleInteraction);
 
-          // On click listener or popover
+          // On click listener on marker
           bitmap_marker[i].addEventListener("click", function(event) {
 
             // Set popover content
