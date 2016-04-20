@@ -160,6 +160,42 @@ section.success a.active {
   color: #2c3e50;
   outline: none;
 }
+section.info {
+  background: #3498db;
+  color: white;
+}
+section.info a,
+section.info a:hover,
+section.info a:focus,
+section.info a:active,
+section.info a.active {
+  color: #2c3e50;
+  outline: none;
+}
+section.warning {
+  background: #f39c12;
+  color: white;
+}
+section.warning a,
+section.warning a:hover,
+section.warning a:focus,
+section.warning a:active,
+section.warning a.active {
+  color: #2c3e50;
+  outline: none;
+}
+section.danger {
+  background: #e74c3c;
+  color: white;
+}
+section.danger a,
+section.danger a:hover,
+section.danger a:focus,
+section.danger a:active,
+section.danger a.active {
+  color: #2c3e50;
+  outline: none;
+}
 @media (max-width: 767px) {
   section {
     padding: 75px 0;
@@ -307,6 +343,18 @@ footer .footer-below {
   text-align: center;
   font-size: 20px;
   line-height: 45px;
+}
+.btn-success{
+  background-color: #18bc9c;
+}
+.btn-info{
+  background-color: #3498db;
+}
+.btn-warning{
+  background-color: #f39c12;
+}
+.btn-danger{
+  background-color: #e74c3c;
 }
 .btn:focus,
 .btn:active,
