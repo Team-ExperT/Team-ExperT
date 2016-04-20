@@ -67,6 +67,9 @@ hr.star-primary:after {
 .img-centered {
   margin: 0 auto;
 }
+.img-screenshot {
+  width: 400px;
+}
 header {
   text-align: center;
   background: #18bc9c;
@@ -253,9 +256,9 @@ section.danger a.active {
   }
 }
 .btn-outline {
-  color: #18bc9c;
+  color: white;
   font-size: 20px;
-  border: solid 2px #18bc9c;
+  border: solid 2px white;
   background: transparent;
   transition: all 0.3s ease-in-out;
   margin-top: 15px;
@@ -264,8 +267,8 @@ section.danger a.active {
 .btn-outline:focus,
 .btn-outline:active,
 .btn-outline.active {
-  color: white;
-  background: #18bc9c;
+  color: #18bc9c;
+  background: white;
   border: solid 2px white;
 }
 .floating-label-form-group {
