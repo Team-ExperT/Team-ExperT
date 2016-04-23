@@ -78,11 +78,10 @@ $(function() {
           bitmap_marker[i].addEventListener("click", function(event) {
 
             // Set popover content
-            ni = (item.ni_p50/13.4*100).toFixed(1);
-            ox = (item.ox_p50/11*100).toFixed(1);
-            ph = (item.ph_p50/2.4*100).toFixed(1);
-            ts = (item.ts_p50/47*100).toFixed(1);
-            content = "<p>" + item.region + "</p>Nitrogen: " + ni + "%<br/>Oxygen: " + ox + "%<br/>Phosphorus: " + ph + "%<br/>Total suspended solids: " + ts + "%"
+            content = "<p>" + item.region + "</p>Nitrogen: " + display_percentage('ni', item.ni_p50) + "%<br/>"
+              + "Oxygen: " + display_percentage('ox', item.ox_p50) + "%<br/>"
+              + "Phosphorus: " + display_percentage('ph', item.ph_p50) + "%<br/>"
+              + "Total suspended solids: " + display_percentage('ts', item.ts_p50) + "%"
             $(".myObj").attr('data-content', content);
             $(".myObj").attr('data-original-title', item.area);
 
@@ -110,3 +109,40 @@ $(function() {
     event.target.alpha = (event.type == "mouseover") ? 1 : 0.5; 
   }
 });
+
+// Localization handler
+$(function() {
+  $('#localization-button').click(function(){
+    pcode = $('#localization-input').val();
+    $.getJSON("http://vicsurv.cloudapp.net:5780/api/get_closest_catchment/"+pcode, function( data ) {
+      data = data[0];
+      result = '<div class="alert alert-info"><dl class="dl-horizontal">'
+        + '<dt>Catchment</dt><dd>' + data.area + '</dd>'
+        + '<dt>Site</dt><dd>' + data.region + '</dd>'
+        + '<dt>Nitrogen</dt><dd>' + data.ni_p50 + ' mg/L (' + display_percentage('ni', data.ni_p50) + '%)</dd>'
+        + '<dt>Oxygen</dt><dd>' + data.ox_p50 + ' mg/L ((' + display_percentage('ox', data.ox_p50) + '%)</dd>'
+        + '<dt>Phosphorus</dt><dd>' + data.ph_p50 + ' mg/L (' + display_percentage('ph', data.ph_p50) + '%)</dd>'
+        + '<dt>Total suspended solids</dt><dd>' + data.ts_p50 + ' mg/L (' + display_percentage('ts', data.ts_p50) + '%)</dd>'
+        + '</dl><footer><small>* Data taken as per latest measurement.<br />** Percentage indicates comparison with highest value measured.</small></footer>'
+        + '</div>';
+      $('#localization-result').html(result).show('slow');
+    });
+  });
+});
+
+function display_percentage(type, num){
+  switch(type){
+    case 'ni':
+      return (num/13.4*100).toFixed(1);
+      break;
+    case 'ox':
+      return (num/11*100).toFixed(1);
+      break;
+    case 'ph':
+      return (num/2.4*100).toFixed(1);
+      break;
+    case 'ts':
+      return (num/47*100).toFixed(1);
+      break;
+  } 
+}
