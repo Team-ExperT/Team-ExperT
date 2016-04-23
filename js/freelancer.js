@@ -83,7 +83,7 @@ $(function() {
               + "Phosphorus: " + display_percentage('ph', item.ph_p50) + "%<br/>"
               + "Total suspended solids: " + display_percentage('ts', item.ts_p50) + "%"
             $(".myObj").attr('data-content', content);
-            $(".myObj").attr('data-original-title', item.area);
+            $(".myObj").attr('data-original-title', item.area + ' Catchment');
 
             // Build the popover
             $(".myObj").css({'position':'absolute','top':item.y,'left':item.x + 15}).popover({
@@ -117,7 +117,7 @@ $(function() {
     $.getJSON("http://vicsurv.cloudapp.net:5780/api/get_closest_catchment/"+pcode, function( data ) {
       data = data[0];
       result = '<div class="alert alert-info"><dl class="dl-horizontal">'
-        + '<dt>Catchment</dt><dd>' + data.area + '</dd>'
+        + '<dt>Catchment</dt><dd>' + data.area + ' Catchment</dd>'
         + '<dt>Site</dt><dd>' + data.region + '</dd>'
         + '<dt>Nitrogen</dt><dd>' + data.ni_p50 + ' mg/L (' + display_percentage('ni', data.ni_p50) + '%)</dd>'
         + '<dt>Oxygen</dt><dd>' + data.ox_p50 + ' mg/L ((' + display_percentage('ox', data.ox_p50) + '%)</dd>'
