@@ -120,7 +120,7 @@ $(function() {
         + '<dt>Catchment</dt><dd>' + data.area + ' Catchment</dd>'
         + '<dt>Site</dt><dd>' + data.region + '</dd>'
         + '<dt>Nitrogen</dt><dd>' + data.ni_p50 + ' mg/L (' + display_percentage('ni', data.ni_p50) + '%)</dd>'
-        + '<dt>Oxygen</dt><dd>' + data.ox_p50 + ' mg/L ((' + display_percentage('ox', data.ox_p50) + '%)</dd>'
+        + '<dt>Oxygen</dt><dd>' + data.ox_p50 + ' mg/L (' + display_percentage('ox', data.ox_p50) + '%)</dd>'
         + '<dt>Phosphorus</dt><dd>' + data.ph_p50 + ' mg/L (' + display_percentage('ph', data.ph_p50) + '%)</dd>'
         + '<dt>Total suspended solids</dt><dd>' + data.ts_p50 + ' mg/L (' + display_percentage('ts', data.ts_p50) + '%)</dd>'
         + '</dl><footer><small>* Data taken as per latest measurement.<br />** Percentage indicates comparison with highest value measured.</small></footer>'
