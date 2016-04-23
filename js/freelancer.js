@@ -44,22 +44,24 @@ $(function() {
   base_image.src = 'img/map/map.png';
 
   base_image.onload = function(){
+    // Draw stage/background
     var bitmap = new createjs.Bitmap(base_image);
     stage.enableMouseOver(10);
     stage.addChild(bitmap);
+    stage.update();
 
     // Clear map when clicked
     bitmap.addEventListener("click", function(event) {
        $(".myObj").popover('hide');
     });
 
+    // Prepare marker
     marker = new Image();
     marker.src = 'img/map/marker.png';
 
     marker.onload = function(){
       var bitmap_marker = [];
-      stage.update();
-      $.getJSON("http://vicsurv.cloudapp.net:5780/api/index", function( data ) {
+      $.getJSON("http://vicsurv.cloudapp.net:5780/api/get_daily_levels", function( data ) {
         $.each(data, function(i, item) {
           bitmap_marker[i] = new createjs.Bitmap(marker);
 
