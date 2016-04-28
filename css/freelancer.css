@@ -211,6 +211,9 @@ section.danger a.active {
     padding-top: 75px;
   }
 }
+div.well{
+  color: black;
+}
 #features .features-item {
   margin: 0 0 15px;
   right: 0;

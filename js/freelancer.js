@@ -81,7 +81,8 @@ $(function() {
             content = "<p>" + item.region + "</p>Nitrogen: " + display_percentage('ni', item.ni_p50) + "%<br/>"
               + "Oxygen: " + display_percentage('ox', item.ox_p50) + "%<br/>"
               + "Phosphorus: " + display_percentage('ph', item.ph_p50) + "%<br/>"
-              + "Total suspended solids: " + display_percentage('ts', item.ts_p50) + "%"
+              + "Total suspended solids: " + display_percentage('ts', item.ts_p50) + "%<br/>"
+              + "Rank: Best " + item.score_rank + " of 129 sites"
             $(".myObj").attr('data-content', content);
             $(".myObj").attr('data-original-title', item.area + ' Catchment');
 
@@ -123,6 +124,7 @@ $(function() {
         + '<dt>Oxygen</dt><dd>' + data.ox_p50 + ' mg/L (' + display_percentage('ox', data.ox_p50) + '%)</dd>'
         + '<dt>Phosphorus</dt><dd>' + data.ph_p50 + ' mg/L (' + display_percentage('ph', data.ph_p50) + '%)</dd>'
         + '<dt>Total suspended solids</dt><dd>' + data.ts_p50 + ' mg/L (' + display_percentage('ts', data.ts_p50) + '%)</dd>'
+        + '<dt>Rank</dt><dd>Best ' + data.score_rank + ' of 129 sites</dd>'
         + '</dl><footer><small>* Data taken as per latest measurement.<br />** Percentage indicates comparison with highest value measured.</small></footer>'
         + '</div>';
       $('#localization-result').html(result).show('slow');
