@@ -366,6 +366,20 @@ footer .footer-below {
 .btn-danger{
   background-color: #e74c3c;
 }
+.btn-yellow {
+color: white;
+  font-size: 20px;
+  border: solid 2px white;
+  background: #ffcc33;
+  transition: all 0.3s ease-in-out;
+  margin-top: 15px;
+}
+.btn-yellow:hover,
+.btn-yellow:focus,
+.btn-yellow:active,
+.btn-yellow.active {
+  border: solid 2px #f4be1a;
+}
 .btn:focus,
 .btn:active,
 .btn.active {
