@@ -76,14 +76,14 @@
       <div class="row">
         <div class="col-lg-12">
 
-          <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+          <div id="carousel-screenshot" class="carousel slide" data-ride="carousel">
             <!-- Indicators -->
             <ol class="carousel-indicators">
-              <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-              <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-              <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-              <li data-target="#carousel-example-generic" data-slide-to="3"></li>
-              <li data-target="#carousel-example-generic" data-slide-to="4"></li>
+              <li data-target="#carousel-screenshot" data-slide-to="0" class="active"></li>
+              <li data-target="#carousel-screenshot" data-slide-to="1"></li>
+              <li data-target="#carousel-screenshot" data-slide-to="2"></li>
+              <li data-target="#carousel-screenshot" data-slide-to="3"></li>
+              <li data-target="#carousel-screenshot" data-slide-to="4"></li>
             </ol>
 
             <!-- Wrapper for slides -->
@@ -111,7 +111,7 @@
             <span class="skills">It is never too young to learn how to protect our planet.</span>
             <p class="page-scroll">
               <a href="#videoModal" class="btn btn-lg btn-outline btn-warning" data-toggle="modal">
-                <i class="fa fa-video-camera"></i> Watch video
+                <i class="fa fa-video-camera"></i> Watch videos
               </a>
               <a href="#about" class="btn btn-lg btn-outline">
                 <i class="fa fa-info-circle"></i> Find out how
@@ -417,32 +417,78 @@
     </a>
   </div>
 
-    <!-- Video Modal -->
-    <div class="features-modal modal fade" id="videoModal" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-content">
-            <div class="close-modal" data-dismiss="modal">
-                <div class="lr">
-                    <div class="rl">
-                    </div>
-                </div>
-            </div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 col-lg-offset-2">
-                        <div class="modal-body">
-                            <h2>Video</h2>
-                            <hr class="star-primary">
-                            <div class="embed-responsive embed-responsive-16by9">
-                              <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/q5Aw_63k4AU"></iframe>
-                            </div>
-                            <p>&nbsp;</p>
-                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  <!-- Video Modal -->
+  <div class="features-modal modal fade" id="videoModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-content">
+      <div class="close-modal" data-dismiss="modal">
+        <div class="lr">
+          <div class="rl">
+          </div>
         </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="modal-body">
+              <h2>Videos</h2>
+              <hr class="star-primary">
+
+              <div id="carousel-videos" class="carousel slide" data-interval="false">
+
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner" role="listbox">
+                  <div class="item active">
+                    <div class="embed-responsive embed-responsive-16by9">
+                      <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/q5Aw_63k4AU"></iframe>
+                    </div>
+                    <div class="carousel-caption">
+                      VicRun promotional video
+                    </div>
+                  </div>
+                  <div class="item">
+                    <div class="embed-responsive embed-responsive-16by9">
+                      <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/EGxzYnwchB0"></iframe>
+                    </div>
+                    <div class="carousel-caption">
+                      In-game animation about saving waterways (1)
+                    </div>
+                  </div>
+                  <div class="item">
+                    <div class="embed-responsive embed-responsive-16by9">
+                      <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/4r0HBJ1TvtA"></iframe>
+                    </div>
+                    <div class="carousel-caption">
+                      In-game animation about saving waterways (2)
+                    </div>
+                  </div>
+                  <div class="item">
+                    <div class="embed-responsive embed-responsive-16by9">
+                      <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/gQ18pJsjGo0"></iframe>
+                    </div>
+                    <div class="carousel-caption">
+                      In-game animation about saving waterways (3)
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Controls -->
+                <a class="left carousel-control" href="#carousel-videos" role="button" data-slide="prev">
+                  <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#carousel-videos" role="button" data-slide="next">
+                  <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </div>
+              
+              <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 
   <!-- jQuery -->
   <script src="js/jquery.js"></script>
