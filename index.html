@@ -170,15 +170,18 @@
           </p>
           <div class="row">
             <div class="col-lg-5">
-              <div class="input-group">
-                <input type="text" id="localization-input" class="form-control" placeholder="Postcode">
-                <span class="input-group-btn">
-                  <button id="localization-button" class="btn btn-default btn-success" type="button">
-                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span> 
-                    Check
-                  </button>
-                </span>
-              </div><!-- /input-group -->
+              <div class="form-group" id="pcode-form-group">
+                <div class="input-group">
+                  <input type="text" id="localization-input" class="form-control" placeholder="Postcode">
+                  <span class="input-group-btn">
+                    <button id="localization-button" class="btn btn-default btn-success" type="button">
+                      <span class="glyphicon glyphicon-search" aria-hidden="true"></span> 
+                      Check
+                    </button>
+                  </span>
+                </div><!-- /input-group -->
+                <span id="helpBlock2" class="help-block" style="display: none;">Invalid Postcode.</span>
+              </div>
             </div><!-- /.col-lg-6 -->
           </div>
         </div>

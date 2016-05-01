@@ -115,20 +115,36 @@ $(function() {
 $(function() {
   $('#localization-button').click(function(){
     pcode = $('#localization-input').val();
-    $.getJSON("http://vicsurv.cloudapp.net:5780/api/get_closest_catchment/"+pcode, function( data ) {
-      data = data[0];
-      result = '<div class="alert alert-info"><dl class="dl-horizontal">'
-        + '<dt>Catchment</dt><dd>' + data.area + ' Catchment</dd>'
-        + '<dt>Site</dt><dd>' + data.region + '</dd>'
-        + '<dt>Nitrogen</dt><dd>' + data.ni_p50 + ' mg/L (' + display_percentage('ni', data.ni_p50) + '%)</dd>'
-        + '<dt>Oxygen</dt><dd>' + data.ox_p50 + ' mg/L (' + display_percentage('ox', data.ox_p50) + '%)</dd>'
-        + '<dt>Phosphorus</dt><dd>' + data.ph_p50 + ' mg/L (' + display_percentage('ph', data.ph_p50) + '%)</dd>'
-        + '<dt>Total suspended solids</dt><dd>' + data.ts_p50 + ' mg/L (' + display_percentage('ts', data.ts_p50) + '%)</dd>'
-        + '<dt>Rank</dt><dd>Best ' + data.score_rank + ' of 129 sites</dd>'
-        + '</dl><footer><small>* Data taken as per latest measurement.<br />** Percentage indicates comparison with highest value measured.</small></footer>'
-        + '</div>';
-      $('#localization-result').html(result).show('slow');
-    });
+    if(pcode.length == 4 && $.isNumeric(pcode))
+    {
+      $('#pcode-form-group').removeClass('has-error');
+      $('#helpBlock2').hide('slow');
+
+      $.ajax({
+        type: 'GET',
+        dataType: 'json',
+        url: "http://vicsurv.cloudapp.net:5780/api/get_closest_catchment/"+pcode,
+        success: function( data ) {
+          data = data[0];
+          result = '<div class="alert alert-info"><dl class="dl-horizontal">'
+            + '<dt>Catchment</dt><dd>' + data.area + ' Catchment</dd>'
+            + '<dt>Site</dt><dd>' + data.region + '</dd>'
+            + '<dt>Nitrogen</dt><dd>' + data.ni_p50 + ' mg/L (' + display_percentage('ni', data.ni_p50) + '%)</dd>'
+            + '<dt>Oxygen</dt><dd>' + data.ox_p50 + ' mg/L (' + display_percentage('ox', data.ox_p50) + '%)</dd>'
+            + '<dt>Phosphorus</dt><dd>' + data.ph_p50 + ' mg/L (' + display_percentage('ph', data.ph_p50) + '%)</dd>'
+            + '<dt>Total suspended solids</dt><dd>' + data.ts_p50 + ' mg/L (' + display_percentage('ts', data.ts_p50) + '%)</dd>'
+            + '<dt>Rank</dt><dd>Best ' + data.score_rank + ' of 129 sites</dd>'
+            + '</dl><footer><small>* Data taken as per latest measurement.<br />** Percentage indicates comparison with highest value measured.</small></footer>'
+            + '</div>';
+          $('#localization-result').html(result).show('slow');
+        },
+        error: function(data){
+          display_error_message("Postcode not found.");
+        }
+      });
+    }else{
+      display_error_message('Invalid Postcode.');
+    }
   });
 });
 
@@ -147,4 +163,10 @@ function display_percentage(type, num){
       return (num/47*100).toFixed(1);
       break;
   } 
+}
+
+function display_error_message(msg){
+  $('#localization-result').html('').hide('slow');
+  $('#pcode-form-group').addClass('has-error');
+  $('#helpBlock2').html(msg).show('slow');
 }
