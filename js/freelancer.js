@@ -148,6 +148,18 @@ $(function() {
   });
 });
 
+// Videos on modal handler
+$(function() {
+  // On closed modal
+  $("#videoModal").on('hidden.bs.modal', function (e) {
+    // Iterate through each iframe
+    $( "#videoModal iframe" ).each(function( i ) {
+      // Reload the video by reseting the src value
+      $(this).attr("src", $(this).attr("src"));
+    });
+  });
+});
+
 function display_percentage(type, num){
   switch(type){
     case 'ni':
