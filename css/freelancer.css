@@ -462,3 +462,12 @@ color: white;
   opacity: 0;
   display: none;
 }
+/* Hack carousel controls to only click-able around the arrows */
+.carousel-control {
+  top: 40%;
+  bottom: 40%;;
+  width: 10%;
+}
+.carousel-control.left, .carousel-control.right {
+  background-image: none;
+}
