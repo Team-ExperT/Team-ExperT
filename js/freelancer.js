@@ -58,12 +58,19 @@ $(function() {
     // Prepare marker
     marker = new Image();
     marker.src = 'img/map/marker.png';
+    monash_marker = new Image();
+    monash_marker.src = 'img/map/university-building.png';
 
     marker.onload = function(){
       var bitmap_marker = [];
       $.getJSON("http://vicsurv.cloudapp.net:5780/api/get_daily_levels", function( data ) {
         $.each(data, function(i, item) {
-          bitmap_marker[i] = new createjs.Bitmap(marker);
+          if(item.id == 999){
+            marker_temp = monash_marker
+          }else{
+            marker_temp = marker
+          }
+          bitmap_marker[i] = new createjs.Bitmap(marker_temp);
 
           // Marker position
           bitmap_marker[i].x = item.x - 25;
@@ -78,13 +85,19 @@ $(function() {
           bitmap_marker[i].addEventListener("click", function(event) {
 
             // Set popover content
-            content = "<p>" + item.region + "</p>Nitrogen: " + display_percentage('ni', item.ni_p50) + "%<br/>"
-              + "Oxygen: " + display_percentage('ox', item.ox_p50) + "%<br/>"
-              + "Phosphorus: " + display_percentage('ph', item.ph_p50) + "%<br/>"
-              + "Total suspended solids: " + display_percentage('ts', item.ts_p50) + "%<br/>"
-              + "Rank: Best " + item.score_rank + " of 129 sites"
+            if(item.id == 999){
+              content = "<p>" + item.region + "</p>Special stage to play for Monash IE Expo"
+              header = item.area
+            }else{
+              content = "<p>" + item.region + "</p>Nitrogen: " + display_percentage('ni', item.ni_p50) + "%<br/>"
+                + "Oxygen: " + display_percentage('ox', item.ox_p50) + "%<br/>"
+                + "Phosphorus: " + display_percentage('ph', item.ph_p50) + "%<br/>"
+                + "Total suspended solids: " + display_percentage('ts', item.ts_p50) + "%<br/>"
+                + "Rank: Best " + item.score_rank + " of 129 sites"
+              header = item.area + 'Catchment'
+              }
             $(".myObj").attr('data-content', content);
-            $(".myObj").attr('data-original-title', item.area + ' Catchment');
+            $(".myObj").attr('data-original-title', header);
 
             // Build the popover
             $(".myObj").css({'position':'absolute','top':item.y,'left':item.x + 15}).popover({
