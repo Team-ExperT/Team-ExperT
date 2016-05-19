@@ -125,6 +125,9 @@ header .intro-text .skills {
   .navbar-fixed-top.navbar-shrink .navbar-brand {
     font-size: 1.5em;
   }
+  .nav.navbar-nav{
+    font-size: 1.2em;
+  }
 }
 .navbar {
   font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -145,7 +148,7 @@ header .intro-text .skills {
   border: none;
 }
 img#logo{
-  width: 150px;
+  height: 60px;
   margin: 5px;
 }
 section {
