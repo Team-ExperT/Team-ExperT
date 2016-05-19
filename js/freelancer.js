@@ -59,7 +59,7 @@ $(function() {
     marker = new Image();
     marker.src = 'img/map/marker.png';
     monash_marker = new Image();
-    monash_marker.src = 'img/map/university-building.png';
+    monash_marker.src = 'img/map/MonashTokenT.png';
 
     marker.onload = function(){
       var bitmap_marker = [];
