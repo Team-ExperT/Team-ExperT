@@ -94,7 +94,7 @@ $(function() {
                 + "Phosphorus: " + display_percentage('ph', item.ph_p50) + "%<br/>"
                 + "Total suspended solids: " + display_percentage('ts', item.ts_p50) + "%<br/>"
                 + "Rank: Best " + item.score_rank + " of 129 sites"
-              header = item.area + 'Catchment'
+              header = item.area + ' Catchment'
               }
             $(".myObj").attr('data-content', content);
             $(".myObj").attr('data-original-title', header);
